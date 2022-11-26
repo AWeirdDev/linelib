@@ -54,11 +54,11 @@ LINELIB uses `flask` to open the magic portal of HTTP.
 
 > [Replit](https://replit.com) is a good option for hosting bots.<br>— Also Also The Wise Man
 
-### ~~Hosting webservers,<br> Managing Data,<br> Understanding LINE API Responses,~~
+#### ~~Configuring webservers,<br> Managing Data,<br> Understanding LINE API Responses,~~
 ## 💻 Just Concentrate on Coding.
 Hosting webservers, managing data, understanding how LINE API works... Say no more! LINELIB does all of that — Just for you.
 
-Look how **clean** using LINELIB Client:
+Just look how **clean** using LINELIB Client:
 
 ```py
 client = linelib.Client("channel secret", "channel access token")
