@@ -165,7 +165,7 @@ class Client:
             )
 
         def wrapper(e, *args, **kwargs):
-         r   if (not "ctx" in e.__code__.co_varnames) and (name != "ready"):
+            if (not "ctx" in e.__code__.co_varnames) and (name != "ready"):
                 Logger.warning(
                     f"\n\n[WARNING] You did not add the required argument — `ctx` — in your function ('{e.__name__}' at {hex(id(e))})\nIn addition, you might receive an error while the event was triggered and sent to your handler.\n\n"
                 )
