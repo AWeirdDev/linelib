@@ -8,7 +8,7 @@ Ever want your LINE Bot's source code cleaner, smoother? LINELIB is your choice.
 
 [✨ Get Started →](https://google.com)
 
-[💡 Examples →](https://google.com)
+[💡 Examples →](https://github.com/AWeirdScratcher/linelib/tree/main/examples)
 
 </div>
 
