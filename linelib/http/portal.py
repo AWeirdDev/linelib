@@ -108,16 +108,23 @@ class Client:
                         f"\nFailed to process the following request:{SN}{SN}{flask.request.get_data(as_text=True) or f'(* BLANK_REQUEST *){SN}* It was probably caused by: it was a user'}\n\n"
                     )
                 req = flask.request.json
-                if req['events'][0]['type'] == "message":
+                ignore = False
+                try:
+                    req["events"][0]
+                except:
+                    print("Done verifying.")
+                    ignore = True
+                if not ignore:
+                  if req['events'][0]['type'] == "message":
                     TYPE = req['events'][0]['message']['type']
-                elif req['events'][0]['type'] == "postback":
+                  elif req['events'][0]['type'] == "postback":
                     TYPE = "postback"
 
-                e = ParseEvent(req, self.channel_access_token)
+                  e = ParseEvent(req, self.channel_access_token)
                 #print(req)
-                if TYPE == "text":
-                    self._go_over_cmds(e)
-                self._trigger(TYPE, ctx=e)
+                  if TYPE == "text":
+                      self._go_over_cmds(e)
+                  self._trigger(TYPE, ctx=e)
                 return "OK"
 
         # handler end
