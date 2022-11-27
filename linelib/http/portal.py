@@ -370,8 +370,11 @@ class Client:
                                   if " ".join(_all[i:]) != "":
                                     ohWow[argument] = " ".join(_all[i:])
                             except Exception as err:
-                                if not hasE:
-                                    raise err
+                                if not hasE: # no type specified && bad args
+                                    if "on_error" in dir(target):
+                                        target.on_error(e, err)
+                                    else:
+                                        raise err
                         target.handler(e, **ohWow)  # function
                     else:
                         Logger.warn(
@@ -479,6 +482,25 @@ class Client:
                     handler = func
                     name = _name or func.__name__
                     args = _args
+
+                    def error(error_type: Union[type, str] = None):
+                        def wrapper(fn, *args, **kwargs):
+                            def Emitter(ctx, err):
+                                if error_type:
+                                    if isinstance(err, str):
+                                        check: bool = err.__name__ == error_type
+                                    else:
+                                        check: bool = type(err) == error_type
+
+                                    if not check:
+                                        raise err # raise it again
+
+                                fn(ctx, err)
+                            CMD.on_error = Emitter
+                            return fn
+                        return wrapper
+                                        
+                        
 
                     class storage:
                         local = LocalStorage
