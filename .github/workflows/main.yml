@@ -18,8 +18,8 @@ jobs:
         EVENT_ISSUE_TITLE: ${{ github.event.issue.title }}
         EVENT_USER_LOGIN: ${{ github.event.issue.user.login }}
       run: |
-            echo ${{ secrets.GITHUB_TOKEN }} > token.txt
-            gh auth login --with-token < ${{ secrets.GITHUB_TOKEN }}
+           
+            gh auth login --with-token ${{ secrets.GITHUB_TOKEN }}
             rm -r token.txt
             git config --local user.email "aweirdscratcher@gmail.com"
             git config --local user.name "AWeirdScratcher"
