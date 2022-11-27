@@ -218,11 +218,11 @@ class Client:
         @self.app.before_first_request
         def beforeFirst(*args, **kwargs): # i do not know the arguments
             self.ready = True
-            Logger.info("\n\033[94m🎉 First request — We Made It!\n")
+            Logger.info("\n\033[94m🎉 First request — We Made It!\n\033[0m")
             self._trigger("ready")
 
         def HPCheck():
-            Logger.info("\n\033[94m✨ Checking server status...\n")
+            Logger.info("\n\033[94m✨ Checking server status...\n\033[0m")
             TIME.sleep(5)
             Logger.info(
                 "\n\033[0m[ 🚀 Please Wait ] Time passed: 5sec after launching "
@@ -372,7 +372,7 @@ class Client:
                             except Exception as err:
                                 if not hasE: # no type specified && bad args
                                     if "on_error" in dir(target):
-                                        target.on_error(e, err)
+                                        return target.on_error(e, err)
                                     else:
                                         raise err
                         target.handler(e, **ohWow)  # function
