@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Community Support
+    url: https://github.com/AWeirdScratcher/linelib/discussions
+    about: Please ask and answer questions here.
+  - name: Official Linelib Posts
+    url: https://github.com/linelibpy
+    about: Stay updated to the latest news.
