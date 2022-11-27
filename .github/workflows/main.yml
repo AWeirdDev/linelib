@@ -26,5 +26,5 @@ jobs:
             git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
             git add .
             gh issue close https://github.com/charlie-moomoo/textboard/issues/${{ github.event.issue.number }}
-            CMT=$"![Hey - HeroImage](https://heymarketing.ca/wp-content/uploads/2020/10/heylargepng.png)\n***\n\nHey ${{ github.actor }}! Thanks for opening a new issue!\nJust a reminder, if you need a little help from the community, please consider joining the [Discussion](https://github.com/AWeirdScratcher/linelib/discussions)!"
+            CMT=$"![Hey - HeroImage](https://heymarketing.ca/wp-content/uploads/2020/10/heylargepng.png)\nHey ${{ github.actor }}! Thanks for opening a new issue!\nJust a reminder, if you need a little help from the community, please consider joining the [Discussion](https://github.com/AWeirdScratcher/linelib/discussions)!"
             gh issue comment ${{ github.event.issue.number }} --body "$CMT"
