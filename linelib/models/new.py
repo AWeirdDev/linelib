@@ -5,6 +5,7 @@ from typing import Union, List, Literal
 from ..logger import Logger
 from ..database import db
 from ..errors import lineApiError
+from .types import ms
 
 
 class Emoji(object):
@@ -22,6 +23,49 @@ Represents a LINE emoji.
             "productId": product_id,
             "emojiId": emoji_id,
             "index": "undefined"  # not defined
+        }
+
+class StickerMessage:
+    """
+    LINE Sticker.
+
+    ## Parameters
+    package_id : str
+    
+        Package ID for a set of stickers. For information on package IDs, see the [List of available stickers](https://developers.line.biz/en/docs/messaging-api/sticker-list/).
+
+    sticker_id : str
+    
+        Sticker ID. For a list of sticker IDs for stickers that can be sent with the Messaging API, see the [List of available stickers](https://developers.line.biz/en/docs/messaging-api/sticker-list/).
+    """
+    def __init__(self, package_id: str, sticker_id: str):
+        self.package_id = package_id
+        self.sticker_id = sticker_id
+        self.json = {
+            "type": "sticker",
+            "packageId": package_id,
+            "stickerId": sticker_id,
+            "index": "undefined"  # not defined
+        }
+
+class ImageMessage:
+    """
+    Image message.
+
+    ## Parameters
+    original_content_url : str
+
+        Image URL, JPEG or PNG.
+
+    preview_image_url : str = None
+
+        Preview Image URL, JPEG or PNG.
+    """
+    def __init__(self, original_content_url: str, preview_image_url: str = None):
+        self.json = {
+            "type": "image",
+            "originalContentUrl": original_content_url,
+            "previewImageUrl": preview_image_url or original_content_url
         }
 
 
@@ -407,6 +451,165 @@ class TextMessage(object):
             "sender": getattr(sender, "json") if sender else None
         }
 
+class VideoMessage:
+    """
+    LINE Video Message.
+    ### Info: Video Aspect Ratio
+    - A very wide or tall video may be cropped when played in some environments.
+    
+    - The aspect ratio of the video specified in originalContentUrl and the preview image specified in previewImageUrl should be the same. If the aspect ratio is different, a preview image will appear behind the video.
+    
+    ![video aspect ratio](https://developers.line.biz/assets/img/image-overlapping-en.0e89fa18.png)
+
+    ## Parameters
+    original_content_url : str
+    
+        The origianl content URL, should be MP4
+
+    preview_image_url : str
+
+        The preview image, should be JPEG or PNG.
+
+    tracking_id : str = None
+    
+        ID used to identify the video when Video viewing complete event occurs. If you send a video message with `tracking_id` added, the video viewing complete event occurs when the user finishes watching the video
+    """
+    def __init__(self, original_content_url: str, preview_image_url: str, tracking_id: str = None):
+        self.json = {
+            "type": "video",
+            "originalContentUrl": original_content_url,
+            "previewImageUrl": preview_image_url,
+            "trackingId": tracking_id
+        }
+
+class AudioMessage:
+    """
+    An audio message.
+
+    original_content_url : str
+    
+        URL of audio file (Max character limit: 2000, M4A)
+
+    duration : ms
+    
+        Audio duration. (In mileseconds)
+    """
+    def __init__(self, original_content_url: str, duration: ms):
+        self.json = {
+            "type": "audio",
+            "originalContentUrl": original_content_url,
+            "duration": dutation
+        }
+
+class LocationMessage:
+    """
+    Location message.
+
+    title : str
+    
+        The title. e.g. my location
+
+    address : str
+
+        Address. e.g. 1-6-1 Yotsuya, Shinjuku-ku, Tokyo, 160-0004, Japan
+
+    latitude : float
+
+        Latitude. e.g. 35.687574
+
+    longitude : float
+
+        Longitude. e.g. 139.72922
+    """
+    def __init__(self, title: str, address: str, latitude: float, longitude: float):
+        self.json = {
+            "type": "location",
+            "title": title,
+            "address": address,
+            "latitude": latitude,
+            "longitude": longitude
+        }
+
+class TemplateMessage:
+    """
+    Template messages are messages with predefined layouts which you can customize.
+
+    alt_text : str
+
+    Alternative text. For example: `My trmplate message`
+
+    json : dict
+    
+        Loads the Template from JSON.
+
+    ## Examples
+    
+    ### Buttons
+    ```py
+    TemplateMessage("you have a message!",
+    {
+    "type": "buttons",
+    "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
+    "imageAspectRatio": "rectangle",
+    "imageSize": "cover",
+    "imageBackgroundColor": "#FFFFFF",
+    "title": "Menu",
+    "text": "Please select",
+    "defaultAction": {
+      "type": "uri",
+      "label": "View detail",
+      "uri": "http://example.com/page/123"
+    },
+    "actions": [
+      {
+        "type": "postback",
+        "label": "Buy",
+        "data": "action=buy&itemid=123"
+      },
+      {
+        "type": "postback",
+        "label": "Add to cart",
+        "data": "action=add&itemid=123"
+      },
+      {
+        "type": "uri",
+        "label": "View detail",
+        "uri": "http://example.com/page/123"
+      }
+    ]
+  })
+    ```
+    
+    ### Confirm
+    ```py
+    TemplateMessage("you have a message!", {
+    "type": "confirm",
+    "text": "Are you sure?",
+    "actions": [
+      {
+        "type": "message",
+        "label": "Yes",
+        "text": "yes"
+      },
+      {
+        "type": "message",
+        "label": "No",
+        "text": "no"
+      }
+      ]
+    })
+    ```
+    
+    ***
+    
+    ...See [this page](https://developers.line.biz/en/reference/messaging-api/#template-messages) for more *official* template examples by LINE Developers Documentation.
+    """
+    def __init__(self, alt_text: str, json: dict):
+        self.json = {
+            "type": "template",
+            "altText": alt_text,
+            "template": json
+        }
 
 class New:
     """
@@ -423,3 +626,9 @@ class New:
     DateTimePickerAction = DateTimePickerAction
     CameraAction = CameraAction
     CameraRollAction = CameraRollAction
+    StickerMessage = StickerMessage
+    ImageMessage = ImageMessage
+    AudioMessage = AudioMessage
+    VideoMessage = VideoMessage
+    LocationMessage = LocationMessage
+    TemplateMessage = TemplateMessage
