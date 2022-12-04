@@ -1,5 +1,7 @@
 > **This project is currently _work-in-progress_, so this repo will remain blank until it's done.** <br>[Learn More](https://github.com/AWeirdScratcher) OR [Check The Status](undefined)
 
+> **We're preparing the documentation.** It'll be here soon... somewhere on this page.
+
 <div align="center">
   <img src="https://user-images.githubusercontent.com/90096971/198866047-361e88b7-d824-4736-a008-5c364e03e819.png" alt="Linelib Horizontal Image" />
 
