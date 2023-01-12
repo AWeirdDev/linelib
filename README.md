@@ -57,10 +57,7 @@ Linelib v2 contains the `wait_for` feature, which is a big help to you if you wa
 async def then(e):
   print('Execute me first!')
 
-await then.wait()
 await ctx.reply('...then execute me!')
-
-... # other code
 ```
 
 ## 🧹 Time to a tidy up.
