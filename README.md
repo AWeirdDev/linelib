@@ -1,79 +1,101 @@
-> **This project is currently _work-in-progress_, so this repo will remain blank until it's done.** <br>[Learn More](https://github.com/AWeirdScratcher) OR [Check The Status](undefined)
 
-> **We're preparing the documentation.** It'll be here soon... somewhere on this page.
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/90096971/198866047-361e88b7-d824-4736-a008-5c364e03e819.png" alt="Linelib Horizontal Image" />
+  <img src="https://user-images.githubusercontent.com/90096971/198866047-361e88b7-d824-4736-a008-5c364e03e819.png" alt="Linelib" />
 
-# :rocket: Launch your bot to the next level.
-Ever want your LINE Bot's source code cleaner, smoother? LINELIB is your choice.
+# :tada: Surprise!
+We're announcing — **Linelib v2**! Code faster and get ready for a huge upgrade to your LINE bot! :sparkles:
 
-[✨ Get Started →](https://google.com)
-
-[💡 Examples →](https://github.com/AWeirdScratcher/linelib/tree/main/examples)
+(NOT RELEASED + FINISHED YET!)
 
 </div>
 
-# 🧹 Say No More To Unorganized Code.
-
-LINELIB has one of the best tools like events and action handlers, which saves you a lot of time!
-
-Let's say you have a postback action, but you DON'T want another `if` statement to handle all of the action postbacks at once...
-
-> **JUST TRY OUT ACTION HANDLERS!**<br>— The Wise Man
+## 💪 FASTER.
+Linelib v2 will be using **async**. Hold up! It's not that hard as you think. Just add an `async` keyword!
 
 ```py
-def someEvent(...):
-  action = New.PostbackAction(...)
+from linelib import Client
 
-  # Check This Out!
-  @action.handle()
-  def handleIt(ctx):
-    ctx.reply("Responding to actions has never been easier like this.")
+client = Client(...)
+
+@client.event('ready')
+async def rdy():
+  print('Bro thinks he ready')
+
+client.run()
 ```
 
-## ...with ✨ DATA STORAGE ✨!
-Data storage helps you to identify a user, or store a pre-built function to execute next.
+### 🤔️ Why async?
+In Linelib version 2, async reduces the system CPU usage by awaiting. This is a huge help when it comes to low-resource environment, and it also works faster on large requests!
 
-> **Everything. You can store EVERYTHING.**<br>— Also The Wise Man
+## 📦 Knock, knock. It's your package!
+No, not that kind of Python package. I meant databases.
+
+Linelib v2 creates a temporary database which helps you to get previous data from previous requests if you're making a form-like chat.
+
+> Note that you can create multiple event handlers with same event names in the update.
+```py
+@client.event('text')
+async def handler1(ctx):
+  if not ctx.stored_user:
+    await ctx.store(
+      "user", # the user's own data
+      ctx.text # the data (message content)
+    )
+    await ctx.reply("I remember you now!")
+  else:
+    await ctx.reply("Your previous message:\n" + ctx.stored_user)
+    await ctx.storage.clear() # say goodbye (reset)
+```
+
+## 😳 I'm watching you.
+Linelib v2 contains the `wait_for` feature, which is a big help to you if you want your bot to wait for the user's reply.
 
 ```py
-def stuff():
-  print("I like cheeseburger")
+# inside a listener
+@client.wait_for('text')
+async def then(e):
+  print('Execute me first!')
 
-action = New.PostbackAction(..., remember="a user", and_do=stuff)
+await then.wait()
+await ctx.reply('...then execute me!')
 
-@action.handle()
-def handleIt(ctx, remember, and_do):
-  #               ^^^^^^^^^^^^^^^^^
-  #                simple as that.
-  ctx.reply("I remember you: " + remember)
-  and_do()
+... # other code
 ```
 
-# 🤖 All, automated.
-LINELIB uses `flask` to open the magic portal of HTTP.
+## 🧹 Time to a tidy up.
+🤬🤬😤 bro i hate messy code!1!!111
 
-> [Replit](https://replit.com) is a good option for hosting bots.<br>— Also Also The Wise Man
-
-#### ~~Configuring webservers,<br> Managing Data,<br> Understanding LINE API Responses,~~
-## 💻 Just Concentrate on Coding.
-Hosting webservers, managing data, understanding how LINE API works... Say no more! LINELIB does all of that — Just for you.
-
-Just look how **clean** using LINELIB Client:
+Use the command method to create commands — instead of overloading your poor, poor text event listener.
 
 ```py
-client = linelib.Client("channel secret", "channel access token")
+@client.command(name="/yo")
+async def yo(ctx):
+  await ctx.reply("ayo mr white")
 ```
 
-...that's it. That's all you need to code. 
+### 🙈 ...with lots of-
+**Options.** Linelib allows you to fully customize your code with options. Such as `QueuedSending` (event tool), `sleepThen` (async outside), and more...
 
-What about Flask Servers? Handlers?<br>Long Story Short, **we did it all for you.**
+(🤩 Yes, they are built in!)
 
-# 🚀 The Journey Awaits.
-Let's just get started.
+## 🐛 GO AWAY, BUGS!
+Here are some bug fixes (currently):
 
-```py
-client.run(host="0.0.0.0", port=8080)
-```
-<sub>Launch your bot!</sub>
+- Handle multiple events from LINE API
+- Slow event emitting
+- Unused codes that's taking over your RAM
+- Long names & code-tip not showing up
+
+...and more, as I release it.
+
+<div align="center">
+
+# Stay Tuned!
+Updates are coming soon!
+
+Really, soon... 😈
+
+<sub>(So I can see people suffer from changing every single function to async)</sub>
+
+</div>
