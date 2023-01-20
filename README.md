@@ -63,9 +63,12 @@ LINELIB currently supports these LINE services:
 <div align="center">
   
   # ( •̀ ω •́ )✧ Ready to give it a shot?
-  Holy goodness, you're here! I'm hyped to see that you're willing to give it a go.
+  Oh my goodness, you're here! I'm hyped to see that you're willing to give it a go.
   
   Anyways, here are some helpful links that can get you around with LINELIB.
+  
+   [🚀 See Examples](https://github.com/AWeirdScratcher/linelib)
+   [🌍 Wiki](https://github.com/AWeirdScratcher/linelib/wiki)
   
 </div>
 
