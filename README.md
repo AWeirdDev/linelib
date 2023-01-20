@@ -16,7 +16,7 @@ Use the following, or clone this repository.
 # 🔑 Features[.](https://www.youtube.com/watch?v=H5v3kku4y6Q)
 
 <div>
-  <img src="https://user-images.githubusercontent.com/90096971/213690282-662ec477-b826-4fa4-9184-abcd8f0230d8.png" alt="Code Example" align="left" width="600" />
+  <img src="https://user-images.githubusercontent.com/90096971/213690282-662ec477-b826-4fa4-9184-abcd8f0230d8.png" alt="Code Example" align="left" width="550" />
   <div>
     
   ## ✨ Optimized Source Code.
