@@ -1,5 +1,3 @@
-> Features coming soon: **Complete events, Complet fetch functionalities**
-
 <div align="center">
   <img src="https://user-images.githubusercontent.com/90096971/213644783-f525dd20-af78-4181-b665-fd6506410bde.png" alt="LINELIB Banner" />
 
@@ -15,7 +13,7 @@ Use the following, or clone this repository.
 
 </div>
 
-# 🔑 Features[.](https://google.com/search?q=dont+click+bro)
+# 🔑 Features[.](https://www.youtube.com/watch?v=H5v3kku4y6Q)
 
 <div>
   <img src="https://user-images.githubusercontent.com/90096971/213690282-662ec477-b826-4fa4-9184-abcd8f0230d8.png" alt="Code Example" align="left" width="450" />

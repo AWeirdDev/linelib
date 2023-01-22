@@ -1,15 +1,14 @@
 """
-LineLib version 2.
+LINELIB
+~~~~~~~~~~~~~~~~~~~
+🚀 Launch your bot to the next level.
 
-https://github.com/AWeirdScratcher/linelib
+:copyright: (c) 2022 AWeirdDev (AWeirdScratcher)
+:license: MIT, see LICENSE for more details.
 """
 
-from .client import *
-from .exceptions import *
-from .construct import *
-from .model.context import *
-from .model.new import *
-from .model.message import *
-
-__author__ = "AWeirdScratcher (AWeirdDev)"
-__version__ = "2.0"
+from .http import *
+from .models import *
+#from .console import *
+# ^ deprecated
+from .tools import Long # It's useless however
