@@ -23,9 +23,8 @@ body:
       label: Version
       description: What version of Linelib are you using?
       options:
-        - 0.1 Pre-Release
-        - 0.1 BETA (GitHub)
-        - Public Test Version
+        - v0.1
+        - v2
     validations:
       required: true
   - type: textarea
