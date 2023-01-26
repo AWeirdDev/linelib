@@ -1,0 +1,49 @@
+name: 📦 Installation Problems
+description: Commit an installation issue.
+title: "[PIP] Bug Name"
+labels: ["problem", "installation", "pip"]
+assignees:
+  - AWeirdScratcher
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this form!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Please provide the information on how the error occurred, along with the installation method. Please make it as detail as possible.
+      placeholder: While I was using pip install...
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version
+      description: For which version of Linelib were you attempting to install?
+      options:
+        - v0.1
+        - v2
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+  - type: solution
+    id: sol
+    attributes:
+      label: Solution (Optional)
+      description: How did you get that to work? Or, how would you like us to improve and fix the issue?
+      placeholder: I recommend you to... (Optional)
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Just to make sure...
+      description: Make sure the following and check them off if they're true.
+      options:
+        - label: I've checked other issues, and this is not a repeated report.
+          required: true
