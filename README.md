@@ -1,4 +1,102 @@
-> Features coming soon: **Complete events, Complet fetch functionalities**
+<details>
+  <summary><h1>Important News: v2.2 coming out!</h1></summary>
+  <p>
+
+Soon, we'll roll out the latest linelib update (`v2.2`) with bug fixes, and make your bots work more efficient. In addition, we're also putting back your favorite (probably) command cogs, but with better updates and features! Let's take a peek!
+
+# 📢 New: Command Cogs!
+With the latest update, commands and cogs will soon replace literally every single text handler! 
+
+Let's see what we can do with them! 😈
+
+## ⚙️ Simple Cog
+The program below is a simple cog that greets you whenever you say `hello`:
+```py
+# version 2.2 (PREVIEW)
+from linelib.ext import commands
+
+class MyCog(commands.Cog):
+  # cog_command MUST be in a cog:
+  @commands.cog_command(name="hello")
+  async def say_hello(self, ctx):
+    await ctx.send("Hello, World!")
+```
+
+## 📦 ...with arguments & error handlers!
+```py
+# version 2.2 (PREVIEW)
+from linelib import MissingArgument
+
+# (inside a cog)
+@commands.cog_command(name="drink")
+async def drink(self, ctx, bottles: int):
+  await ctx.send(f'You drank {bottles} of water!')
+
+@drink.on_error
+async def error_handler(self, ctx, error):
+  if isinstance(error, MissingArgument): # missing a parameter ('bottles')
+    await ctx.send('You missed some parameters!')
+  else:
+    raise error # if this error is something else...
+```
+
+## 🔑 Command not found? I got you covered!
+```py
+# version 2.2 (PREVIEW)
+
+class MyCog(commands.Cog):
+  ...
+  
+  async def not_found(self, ctx, command):
+    print(f"Command {command} not found!")
+```
+
+# 📖 New: Command Rules!
+Command rules help you to add rules to your commands which help you easily to detect if the users have the permission to use this command or not.
+
+Even further, it is possible to modify it with ✨ command cooldowns! ✨
+
+```py
+# DECLARATION, DO NOT COPY
+def __init__(self, *, rule: Literal["cooldown", "except", "for", "based.custom", "usage_limit"], **variations) -> None
+```
+
+## 🥶 Command Cooldowns & Rejects
+```py
+# version 2.2 (PREVIEW)
+from linelib.ext import commands, rule
+
+# (inside a cog)
+@commands.cog_command(
+  name="command",
+  rule=rule.CommandRule(
+    rule="cooldown",
+    seconds=10
+  )
+)
+async def my_command(self, ctx):
+  await ctx.send('Hello!')
+  
+@my_command.rule_reject
+async def rule_rejected(self, ctx):
+  await ctx.send('You just greeted me!\nThe cooldown is 10 seconds long.')
+```
+
+# 😎 Load the Cog like a Pro
+```py
+client.load_cog(MyCog())
+```
+
+That's it! We also added some other features that are pretty stunning besides these! :)
+
+[✨ Stay Tuned!](https://www.youtube.com/watch?v=h64PVy2h3qg)
+
+***
+
+  </p>
+</details>
+
+> Features coming soon: **Complete events**
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/90096971/213644783-f525dd20-af78-4181-b665-fd6506410bde.png" alt="LINELIB Banner" />
