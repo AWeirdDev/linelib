@@ -1,5 +1,5 @@
 <details>
-  <summary><h1>Important News: v2.2 coming out!</h1></summary>
+  <summary><h1>v2.2 coming out SOON!</h1></summary>
   <p>
 
 Soon, we'll roll out the latest linelib update (`v2.2`) with bug fixes, and make your bots work more efficient. In addition, we're also putting back your favorite (probably) command cogs, but with better updates and features! Let's take a peek!
