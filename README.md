@@ -61,7 +61,7 @@ Linelib helps you to quickly and efficiently create text commands by organizing 
   
    [🚀 See More Examples](https://github.com/AWeirdScratcher/linelib)
 
-   [📖 Documentation](https://github.com/AWeirdScratcher/linelib/wiki/docs)
+   [📖 Documentation](https://github.com/AWeirdScratcher/linelib/wiki/documentation)
   
 </div>
 
