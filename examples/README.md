@@ -6,7 +6,7 @@ Without further ado, let's pick the best example for you! 💪
 # 🪄 Quick Find Wizard
 For which type of LINE Bot you wish to go with?
 
-1. [🍔 Food & Drink, Restaurant, Reserves, Shopping...]
+1. [🍔 Food & Drink, Restaurant, Reserves, Shopping...](https://github.com/AWeirdScratcher/linelib/tree/v2/examples/food-and-drink)
 2. [🌱 Weather, News, Travel...]
 3. [😁 Motivation, Memes, Quotes...]
 4. [🏋️ Fitness, Workout, Exercise...]
