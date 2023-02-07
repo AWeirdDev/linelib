@@ -25,6 +25,10 @@ jobs:
             git config --local user.name "AWeirdScratcher"
             git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
             git add .
-            gh issue close https://github.com/charlie-moomoo/textboard/issues/${{ github.event.issue.number }}
-            CMT=$"![Hey - HeroImage](https://heymarketing.ca/wp-content/uploads/2020/10/heylargepng.png)\nHey ${{ github.actor }}! Thanks for opening a new issue!\nJust a reminder, if you need a little help from the community, please consider joining the [Discussion](https://github.com/AWeirdScratcher/linelib/discussions)!"
-            gh issue comment ${{ github.event.issue.number }} --body "$CMT"
+            read -r -d '' TEXT <<- EOM
+            # Hey!
+            Hey, ${{ github.actor }}! 
+            Thanks for opening a new issue!
+            Just a reminder, if you need help from the community, please consider joining the [Discussions](https://github.com/AWeirdScratcher/linelib/discussions)!
+            EOM
+            gh issue comment ${{ github.event.issue.number }} --body "$TEXT"
