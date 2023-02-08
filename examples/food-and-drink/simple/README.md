@@ -23,6 +23,16 @@ This installs the latest version of Linelib, and we're good to go!
 
 Also, you'll need a **Python Code Editor**. I highly recommend you to **use [Replit](https://replit.com)**.
 
+[Create a new REPL →](https://replit.com/new/python)
+
 <details>
   <summary>Why Replit?</summary>
+  <p>
+
+Replit is a powerful IDE, compiler, & interpreter. They also support **Hosting** which is **EXACTLY** what we need!
+
+  </p>
 </details>
+
+## Understanding the Concept
+We're 
