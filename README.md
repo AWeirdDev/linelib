@@ -1,4 +1,4 @@
-> This repository will stay un-updated until `v3`. Check out the [Pypi Page](https://pypi.org/project/linelib) for the latest version.
+> Check out v3 (linex) https://github.com/AWeirdScratcher/linex
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/90096971/213644783-f525dd20-af78-4181-b665-fd6506410bde.png" alt="LINELIB Banner" />
